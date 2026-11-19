@@ -15,25 +15,18 @@ test('chooses the stage at each boundary using unrounded remaining time', () => 
   }
 });
 
-test('returns the display units and total values from the same remaining time', () => {
+test('returns clock units and reaches zero at the target instant', () => {
   const remainingMs = day + 2 * 3_600_000 + 3 * 60_000 + 4_000;
   const state = getCountdown(target, target - remainingMs);
   assert.deepEqual(state.units, { days: 1, hours: 2, minutes: 3, seconds: 4 });
-  assert.deepEqual(state.totals, {
-    days: remainingMs / day,
-    hours: remainingMs / 3_600_000,
-    minutes: remainingMs / 60_000,
-    seconds: 93_784,
-  });
 
   const justBefore = getCountdown(target, target - 1);
   assert.equal(justBefore.units.seconds, 1);
-  assert.equal(justBefore.totals.seconds, 1);
   assert.ok(justBefore.progress < 1);
 
   const ended = getCountdown(target, target + day);
   const zeroes = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  assert.deepEqual(ended, { remainingMs: 0, units: zeroes, totals: zeroes, stage: 6, progress: 1 });
+  assert.deepEqual(ended, { remainingMs: 0, units: zeroes, stage: 6, progress: 1 });
 });
 
 test('moves linearly over four weeks, including within a single stage', () => {
@@ -78,9 +71,9 @@ test('accepts equivalent UTC and encoded-offset overrides and local browser time
 
 test('distinguishes empty or invalid overrides from a valid expired target', async () => {
   for (const value of ['', 'morgen', '2027-02-30T18:00:00Z', '2027-01-15T18:00:00+01:00']) {
-    assert.deepEqual(await loadTargetDate(`${page}?date=${value}&test=1#details`), {
+    assert.deepEqual(await loadTargetDate(`${page}?date=${value}&test=1#anchor`), {
       error: 'date',
-      defaultUrl: `${page}?test=1#details`,
+      defaultUrl: `${page}?test=1#anchor`,
     });
   }
   const expired = await loadTargetDate(`${page}?date=2027-01-14T17:00:00Z`);

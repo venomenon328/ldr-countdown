@@ -10,11 +10,6 @@ const georgia = characters.querySelector('.character--georgia img');
 const tobias = characters.querySelector('.character--tobias img');
 const couple = characters.querySelector('.character--couple img');
 const clockNumber = new Intl.NumberFormat('de-DE', { minimumIntegerDigits: 2 });
-const wholeNumber = new Intl.NumberFormat('de-DE');
-const decimalNumber = new Intl.NumberFormat('de-DE', {
-  minimumFractionDigits: 3,
-  maximumFractionDigits: 3,
-});
 const moods = [
   'Georgia und Tobias vermissen einander sehr.',
   'Georgia und Tobias blicken traurig zueinander.',
@@ -55,15 +50,6 @@ function showStage(stage) {
   }
 }
 
-function readFields(group) {
-  return Object.fromEntries(
-    Array.from(countdown.querySelectorAll(`[data-${group}]`), element => [
-      element.getAttribute(`data-${group}`),
-      element,
-    ]),
-  );
-}
-
 const result = await loadTargetDate(window.location.href);
 if (result.error === 'date') {
   scene.dataset.state = 'error';
@@ -79,9 +65,8 @@ if (result.error === 'date') {
 }
 
 function startCountdown(targetTime) {
-  const units = readFields('unit');
-  const totals = readFields('total');
-  const unitNames = Object.keys(units);
+  const fields = countdown.querySelectorAll('[data-unit]');
+  const dayField = countdown.querySelector('[data-unit="days"]');
   let timer;
   let lastStage;
   let lastDayLength;
@@ -90,13 +75,11 @@ function startCountdown(targetTime) {
     clearTimeout(timer);
     const state = getCountdown(targetTime, Date.now());
 
-    for (const unit of unitNames) {
-      units[unit].textContent = clockNumber.format(state.units[unit]);
-      const formatter = unit === 'seconds' ? wholeNumber : decimalNumber;
-      totals[unit].textContent = formatter.format(state.totals[unit]);
+    for (const field of fields) {
+      field.textContent = clockNumber.format(state.units[field.dataset.unit]);
     }
 
-    const dayLength = units.days.textContent.length;
+    const dayLength = dayField.textContent.length;
     if (dayLength !== lastDayLength) {
       scene.style.setProperty('--day-length', dayLength);
       lastDayLength = dayLength;

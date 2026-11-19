@@ -69,12 +69,6 @@ export function getCountdown(targetTime, now) {
       minutes: Math.floor(totalSeconds / 60) % 60,
       seconds: totalSeconds % 60,
     },
-    totals: {
-      days: remainingMs / DAY,
-      hours: remainingMs / HOUR,
-      minutes: remainingMs / MINUTE,
-      seconds: totalSeconds,
-    },
     stage: 1 + passedBoundaries.length,
     progress: 1 - Math.min(remainingMs / APPROACH_DURATION, 1),
   };

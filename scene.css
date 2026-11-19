@@ -185,16 +185,10 @@ body {
   border-radius: 50%;
   background: #252440b3;
   cursor: pointer;
-  list-style: none;
-}
-
-.icon-control::-webkit-details-marker {
-  display: none;
 }
 
 .icon-control:hover,
-.icon-control:focus-visible,
-.details[open] .icon-control {
+.icon-control:focus-visible {
   border-color: #ffe3ac;
   background: #39324d;
 }
@@ -202,36 +196,6 @@ body {
 .icon-control:focus-visible {
   outline: 2px solid #fff4df;
   outline-offset: 4px;
-}
-
-.details[open] summary svg {
-  transform: rotate(45deg);
-}
-
-.totals {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: .65rem 1rem;
-  box-sizing: border-box;
-  width: min(38rem, calc(100% - 2rem));
-  margin: .6rem auto 0;
-  padding: .7rem 1.05rem;
-  border: 1px solid #ffe3ac70;
-  border-radius: 1rem;
-  background: #22213df5;
-  box-shadow: 0 6px 24px #17142f44;
-}
-
-.totals dt {
-  color: #ffe7c2;
-  font-size: .875rem;
-}
-
-.totals dd {
-  margin: .15rem 0 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: clamp(1.125rem, 3vw, 1.5rem);
-  overflow-wrap: anywhere;
 }
 
 .placeholder svg {
@@ -267,13 +231,6 @@ body {
 @media (max-height: 40rem) and (orientation: portrait) {
   .clock {
     top: clamp(1.75rem, 9svh, 3.75rem);
-  }
-}
-
-@media (max-width: 33rem) {
-  .totals {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    width: min(20rem, calc(100% - 2rem));
   }
 }
 

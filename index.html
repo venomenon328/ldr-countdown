@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#242341">
     <title>Countdown bis zum Wiedersehen</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" sizes="16x16 24x24 32x32 48x48 64x64">
     <link rel="stylesheet" href="./scene.css">
     <script type="module" src="./app.mjs"></script>
   </head>
@@ -47,20 +48,6 @@
             <div class="time-part"><span class="time-number" data-unit="minutes"></span><span class="time-label" aria-hidden="true">Min.</span><span class="visually-hidden">Minuten</span></div>
             <div class="time-part"><span class="time-number" data-unit="seconds"></span><span class="time-label" aria-hidden="true">Sek.</span><span class="visually-hidden">Sekunden</span></div>
           </div>
-
-          <details class="details">
-            <summary class="icon-control" aria-label="Restzeit im Detail">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M6 12h12m-6-6v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <dl class="totals">
-              <div><dt><span class="visually-hidden">Gesamtzahl der </span>Tage</dt><dd data-total="days"></dd></div>
-              <div><dt><span class="visually-hidden">Gesamtzeit in </span>Stunden</dt><dd data-total="hours"></dd></div>
-              <div><dt><span class="visually-hidden">Gesamtzeit in </span>Minuten</dt><dd data-total="minutes"></dd></div>
-              <div><dt><span class="visually-hidden">Gesamtzeit in </span>Sekunden</dt><dd data-total="seconds"></dd></div>
-            </dl>
-          </details>
         </section>
       </div>
     </main>
