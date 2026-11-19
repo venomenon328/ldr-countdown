@@ -10,25 +10,33 @@ const georgia = characters.querySelector('.character--georgia img');
 const tobias = characters.querySelector('.character--tobias img');
 const couple = characters.querySelector('.character--couple img');
 const clockNumber = new Intl.NumberFormat('de-DE', { minimumIntegerDigits: 2 });
-const moods = [
-  'Georgia und Tobias vermissen einander sehr.',
-  'Georgia und Tobias blicken traurig zueinander.',
-  'Georgia und Tobias lächeln einander zaghaft zu.',
-  'Georgia und Tobias freuen sich aufeinander.',
-  'Georgia und Tobias können das Treffen kaum erwarten.',
-  'Wiedersehen. Georgia und Tobias umarmen sich.',
+const stages = [
+  { pair: '01', status: 'Georgia und Tobias vermissen einander sehr.' },
+  { pair: '02', status: 'Georgia und Tobias blicken traurig zueinander.' },
+  { pair: '03-foto', status: 'Georgia drückt ein Foto von Tobias an sich. Tobias streicht über den Rand eines Fotos von Georgia.' },
+  { pair: '03', status: 'Georgia legt die Hand ans Herz. Tobias lächelt zaghaft zurück.' },
+  { pair: '05-handykuss', status: 'Georgia schickt Tobias einen Handkuss per Handy. Tobias wird rot.' },
+  { pair: '04', status: 'Georgia und Tobias freuen sich mit offenen Armen aufeinander.' },
+  { pair: '07-controller', status: 'Georgia grinst am Controller. Tobias beugt sich konzentriert vor.' },
+  { pair: '08-platz-fuer-zwei', status: 'Georgia stellt eine zweite Tasse bereit. Tobias kann sich zwischen zwei Filmen nicht entscheiden.' },
+  { pair: '05', status: 'Georgia und Tobias können das Treffen kaum erwarten.' },
+  { pair: '10-kofferpacken', status: 'Tobias packt den letzten Pulli ein. Georgia schüttelt das zweite Kopfkissen auf.' },
+  { pair: '11-aufbruch', status: 'Tobias bindet sich im Stehen den Schuh. Georgia schaut auf die Uhr und wippt auf den Zehenspitzen.' },
+  { pair: '12-anreise', status: 'Tobias ist mit seinem Rollkoffer unterwegs. Georgia hält lächelnd nach ihm Ausschau.' },
+  { couple: '06-wiedersehen', status: 'Wiedersehen. Georgia und Tobias umarmen sich.' },
 ];
 
-function stageImages(stage) {
+function stageImages({ pair, couple }) {
   const directory = './assets/characters/stages/';
-  return stage === 6
-    ? [directory + '06-wiedersehen.png']
-    : [directory + `0${stage}-georgia.png`, directory + `0${stage}-tobias.png`];
+  return couple
+    ? [`${directory}${couple}.png`]
+    : [`${directory}${pair}-georgia.png`, `${directory}${pair}-tobias.png`];
 }
 
 function showStage(stage) {
-  const finale = stage === 6;
-  const images = stageImages(stage);
+  const current = stages[stage - 1];
+  const finale = Boolean(current.couple);
+  const images = stageImages(current);
   if (finale) {
     [couple.src] = images;
   } else {
@@ -40,10 +48,11 @@ function showStage(stage) {
   characters.hidden = false;
   scene.dataset.state = finale ? 'finale' : 'running';
   countdown.dataset.stage = stage;
-  status.textContent = moods[stage - 1];
+  status.textContent = current.status;
 
-  if (!finale) {
-    for (const src of stageImages(stage + 1)) {
+  const next = stages[stage];
+  if (next) {
+    for (const src of stageImages(next)) {
       const nextImage = new Image();
       nextImage.src = src;
     }

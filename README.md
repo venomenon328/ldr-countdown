@@ -19,4 +19,4 @@ Mit `python -m http.server 8000` lässt sich die Seite aus dem Repository über 
 
 Die Logiktests laufen mit `node --test`.
 
-Für die Illustration liefert `getCountdown` aus `countdown.mjs` die Bildstufe `stage` (1 bis 6) und den gemeinsamen Fortschritt `progress` (0 bis 1) aus derselben Restzeit. Die fünf Figurenpaare und die Wiedersehenspose liegen unter `assets/characters/stages/`. Die Seeterrasse liegt in zwei Bildformaten unter `assets/scene/`. Die [Figuren-Dokumentation](assets/characters/README.md#platzierung-auf-der-website) beschreibt die Fußpunkte, an denen die Wege der beiden Figuren enden.
+Für die Illustration liefert `getCountdown` aus `countdown.mjs` die Bildstufe `stage` (1 bis 13) und den gemeinsamen Fortschritt `progress` (0 bis 1) aus derselben Restzeit. Die zwölf Figurenpaare und die Wiedersehenspose liegen unter `assets/characters/stages/`. Die Seeterrasse liegt in zwei Bildformaten unter `assets/scene/`. Die [Figuren-Dokumentation](assets/characters/README.md) enthält die Stufentabelle, die Vorschau und die Fußpunkte, an denen die Wege der beiden Figuren enden.

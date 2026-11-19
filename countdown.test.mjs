@@ -2,31 +2,38 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { getCountdown, loadTargetDate } from './countdown.mjs';
 
-const day = 24 * 60 * 60 * 1_000;
+const hour = 60 * 60 * 1_000;
+const day = 24 * hour;
 const target = Date.UTC(2027, 0, 15, 17);
 const page = 'https://example.test/wiedersehen/';
 
 test('chooses the stage at each boundary using unrounded remaining time', () => {
-  for (const [days, stage] of [[21, 2], [14, 3], [7, 4], [1, 5], [0, 6]]) {
-    const boundary = target - days * day;
-    assert.equal(getCountdown(target, boundary - 1).stage, stage - 1, `before ${days} days`);
-    assert.equal(getCountdown(target, boundary).stage, stage, `at ${days} days`);
-    assert.equal(getCountdown(target, boundary + 1).stage, stage, `after ${days} days`);
+  const thresholds = [
+    [21 * day, 2], [17 * day, 3], [14 * day, 4], [10 * day, 5],
+    [7 * day, 6], [4 * day, 7], [2 * day, 8], [day, 9],
+    [16 * hour, 10], [8 * hour, 11], [6 * hour, 12], [0, 13],
+  ];
+  for (const [remainingMs, stage] of thresholds) {
+    const boundary = target - remainingMs;
+    assert.equal(getCountdown(target, boundary - 1).stage, stage - 1, `before stage ${stage}`);
+    assert.equal(getCountdown(target, boundary).stage, stage, `at stage ${stage}`);
+    assert.equal(getCountdown(target, boundary + 1).stage, stage, `after entering stage ${stage}`);
   }
 });
 
 test('returns clock units and reaches zero at the target instant', () => {
-  const remainingMs = day + 2 * 3_600_000 + 3 * 60_000 + 4_000;
+  const remainingMs = day + 2 * hour + 3 * 60_000 + 4_000;
   const state = getCountdown(target, target - remainingMs);
   assert.deepEqual(state.units, { days: 1, hours: 2, minutes: 3, seconds: 4 });
 
   const justBefore = getCountdown(target, target - 1);
+  assert.equal(justBefore.stage, 12);
   assert.equal(justBefore.units.seconds, 1);
   assert.ok(justBefore.progress < 1);
 
   const ended = getCountdown(target, target + day);
   const zeroes = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-  assert.deepEqual(ended, { remainingMs: 0, units: zeroes, stage: 6, progress: 1 });
+  assert.deepEqual(ended, { remainingMs: 0, units: zeroes, stage: 13, progress: 1 });
 });
 
 test('moves linearly over four weeks, including within a single stage', () => {
@@ -35,10 +42,14 @@ test('moves linearly over four weeks, including within a single stage', () => {
   }
   assert.equal(getCountdown(target, target - 35 * day).units.days, 35);
 
-  const earlier = getCountdown(target, target - 20 * day);
-  const later = getCountdown(target, target - 18 * day);
-  assert.equal(earlier.stage, later.stage);
+  const earlier = getCountdown(target, target - 13 * day);
+  const later = getCountdown(target, target - 11 * day);
+  const oneHourLater = getCountdown(target, target - 11 * day + hour);
+  assert.equal(earlier.stage, 4);
+  assert.equal(later.stage, 4);
+  assert.equal(oneHourLater.stage, 4);
   assert.ok(earlier.progress < later.progress);
+  assert.ok(later.progress < oneHourLater.progress);
 });
 
 test('fetches the relative config afresh on every call without a URL override', async () => {
@@ -77,7 +88,7 @@ test('distinguishes empty or invalid overrides from a valid expired target', asy
     });
   }
   const expired = await loadTargetDate(`${page}?date=2027-01-14T17:00:00Z`);
-  assert.equal(getCountdown(expired.targetTime, target).stage, 6);
+  assert.equal(getCountdown(expired.targetTime, target).stage, 13);
 });
 
 test('reports missing, unreadable, unset and invalid configs', async () => {

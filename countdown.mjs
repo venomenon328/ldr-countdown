@@ -4,7 +4,10 @@ const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 const APPROACH_DURATION = 28 * DAY;
 
-const STAGE_BOUNDARIES = [21 * DAY, 14 * DAY, 7 * DAY, DAY, 0];
+const STAGE_BOUNDARIES = [
+  21 * DAY, 17 * DAY, 14 * DAY, 10 * DAY, 7 * DAY, 4 * DAY, 2 * DAY, DAY,
+  16 * HOUR, 8 * HOUR, 6 * HOUR, 0,
+];
 const ISO_DATE_TIME = /^(\d{4})-(\d{2})-(\d{2})(?:T(?:[01]\d|2[0-3]):[0-5]\d(?::[0-5]\d(?:\.\d+)?)?(Z|[+-](?:[01]\d|2[0-3]):?[0-5]\d)?)?$/;
 
 function parseDate(value, requireOffset) {
