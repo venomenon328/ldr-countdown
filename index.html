@@ -3,35 +3,66 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#242341">
     <title>Countdown bis zum Wiedersehen</title>
+    <link rel="stylesheet" href="./scene.css">
     <script type="module" src="./app.mjs"></script>
   </head>
   <body>
-    <main>
-      <h1>Countdown bis zum Wiedersehen</h1>
-      <p id="status" role="status">Termin wird geladen …</p>
-      <a id="default-link" hidden>Seite ohne Terminparameter öffnen</a>
-      <section id="countdown" hidden aria-label="Verbleibende Zeit">
-        <p>
-          <span data-unit="days"></span> Tage,
-          <span data-unit="hours"></span> Stunden,
-          <span data-unit="minutes"></span> Minuten,
-          <span data-unit="seconds"></span> Sekunden
-        </p>
-        <details>
-          <summary>Restzeit im Detail</summary>
-          <dl>
-            <dt>Gesamttage</dt>
-            <dd data-total="days"></dd>
-            <dt>Gesamtstunden</dt>
-            <dd data-total="hours"></dd>
-            <dt>Gesamtminuten</dt>
-            <dd data-total="minutes"></dd>
-            <dt>Gesamtsekunden</dt>
-            <dd data-total="seconds"></dd>
-          </dl>
-        </details>
-      </section>
+    <main class="scene" id="scene" data-state="loading">
+      <h1 class="visually-hidden">Countdown bis zum Wiedersehen</h1>
+      <picture class="landscape" aria-hidden="true">
+        <source media="(orientation: portrait)" srcset="./assets/scene/terrasse-hoch.webp" width="1024" height="1536">
+        <img src="./assets/scene/terrasse-quer.webp" width="1536" height="1024" alt="" fetchpriority="high">
+      </picture>
+
+      <div class="characters" id="characters" hidden>
+        <div class="character character--georgia"><img width="432" height="624" alt="Georgia"></div>
+        <div class="character character--tobias"><img width="432" height="624" alt="Tobias"></div>
+        <div class="character character--couple" hidden><img width="432" height="624" alt="Georgia und Tobias umarmen sich"></div>
+      </div>
+
+      <div class="clock">
+        <p class="visually-hidden" id="status" role="status" aria-atomic="true">Termin wird geladen.</p>
+        <div class="placeholder" id="placeholder" aria-hidden="true">
+          <svg class="loading-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="15" stroke="currentColor" stroke-opacity=".25" stroke-width="1.5"/>
+            <path d="M20 5a15 15 0 0 1 15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <svg class="error-icon" width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="15" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M20 13v8m0 5v1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <a class="icon-control" id="default-link" aria-label="Seite ohne Terminparameter öffnen" hidden>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m3 11 9-7 9 7M6 10v9h4v-5h4v5h4v-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+        <section id="countdown" aria-label="Verbleibende Zeit" hidden>
+          <div class="time" role="timer" aria-label="Restzeit" aria-live="off">
+            <div class="time-part"><span class="time-number" data-unit="days"></span><span class="time-label">Tage</span></div>
+            <div class="time-part"><span class="time-number" data-unit="hours"></span><span class="time-label" aria-hidden="true">Std.</span><span class="visually-hidden">Stunden</span></div>
+            <div class="time-part"><span class="time-number" data-unit="minutes"></span><span class="time-label" aria-hidden="true">Min.</span><span class="visually-hidden">Minuten</span></div>
+            <div class="time-part"><span class="time-number" data-unit="seconds"></span><span class="time-label" aria-hidden="true">Sek.</span><span class="visually-hidden">Sekunden</span></div>
+          </div>
+
+          <details class="details">
+            <summary class="icon-control" aria-label="Restzeit im Detail">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 12h12m-6-6v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </summary>
+            <dl class="totals">
+              <div><dt><span class="visually-hidden">Gesamtzahl der </span>Tage</dt><dd data-total="days"></dd></div>
+              <div><dt><span class="visually-hidden">Gesamtzeit in </span>Stunden</dt><dd data-total="hours"></dd></div>
+              <div><dt><span class="visually-hidden">Gesamtzeit in </span>Minuten</dt><dd data-total="minutes"></dd></div>
+              <div><dt><span class="visually-hidden">Gesamtzeit in </span>Sekunden</dt><dd data-total="seconds"></dd></div>
+            </dl>
+          </details>
+        </section>
+      </div>
     </main>
   </body>
 </html>

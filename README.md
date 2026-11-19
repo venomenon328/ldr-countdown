@@ -15,8 +15,8 @@ Ein Link mit `?date=2027-01-15T18:00:00%2B01:00` verwendet den angegebenen Termi
 
 ## Lokal prüfen
 
-Mit `python -m http.server 8000` lässt sich die Seite aus dem Repository über `http://localhost:8000/` aufrufen. Für einen Test im Unterpfad den Server im übergeordneten Verzeichnis starten und `http://localhost:8000/ldr-countdown/` öffnen.
+Mit `python -m http.server 8000` lässt sich die Seite aus dem Repository über `http://localhost:8000/` aufrufen. Für den Aufruf unter einem Unterpfad den Server im übergeordneten Verzeichnis starten und `http://localhost:8000/ldr-countdown/` öffnen. Ein statischer Webserver kann dieselben Dateien direkt ausliefern. Die Seite braucht keinen Build und lädt Skripte, Bilder und Termin relativ zu `index.html`.
 
-Die Logiktests laufen mit `node --test`.
+Das Pluszeichen unter der Uhr öffnet die vier Gesamtwerte. Die Logiktests laufen mit `node --test`.
 
-Für die Illustration liefert `getCountdown` aus `countdown.mjs` die Bildstufe `stage` (1 bis 6) und den gemeinsamen Fortschritt `progress` (0 bis 1) aus derselben Restzeit. Die fünf Figurenpaare und die Wiedersehenspose liegen unter `assets/characters/stages/`. Die [Figuren-Dokumentation](assets/characters/README.md#platzierung-auf-der-website) beschreibt die Fußpunkte, an denen die Wege der beiden Figuren enden.
+Für die Illustration liefert `getCountdown` aus `countdown.mjs` die Bildstufe `stage` (1 bis 6) und den gemeinsamen Fortschritt `progress` (0 bis 1) aus derselben Restzeit. Die fünf Figurenpaare und die Wiedersehenspose liegen unter `assets/characters/stages/`. Die Seeterrasse liegt in zwei Bildformaten unter `assets/scene/`. Die [Figuren-Dokumentation](assets/characters/README.md#platzierung-auf-der-website) beschreibt die Fußpunkte, an denen die Wege der beiden Figuren enden.
