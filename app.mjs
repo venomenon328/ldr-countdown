@@ -17,12 +17,12 @@ const stages = [
   { pair: '03', status: 'Georgia legt die Hand ans Herz. Tobias lächelt zaghaft zurück.' },
   { pair: '05-handykuss', status: 'Georgia schickt Tobias einen Handkuss per Handy. Tobias wird rot.' },
   { pair: '04', status: 'Georgia und Tobias freuen sich mit offenen Armen aufeinander.' },
-  { pair: '07-controller', status: 'Georgia grinst am Controller. Tobias beugt sich konzentriert vor.' },
-  { pair: '08-platz-fuer-zwei', status: 'Georgia stellt eine zweite Tasse bereit. Tobias kann sich zwischen zwei Filmen nicht entscheiden.' },
+  { pair: '07-controller', status: 'Georgia neigt den Kopf, hält die Hände hinter dem Rücken und lächelt versonnen. Tobias grinst zufrieden, eine Hand in der Hosentasche.' },
+  { pair: '08-platz-fuer-zwei', status: 'Georgia legt mit leuchtenden Augen die Hände unter dem Kinn zusammen. Tobias lehnt sich leicht nach vorn, hebt die Brauen und strahlt.' },
   { pair: '05', status: 'Georgia und Tobias können das Treffen kaum erwarten.' },
-  { pair: '10-kofferpacken', status: 'Tobias packt den letzten Pulli ein. Georgia schüttelt das zweite Kopfkissen auf.' },
+  { pair: '10-kofferpacken', status: 'Tobias drückt einen weißen Pulli in den offenen beigen Rollkoffer. Georgia schüttelt das zweite Kopfkissen auf.' },
   { pair: '11-aufbruch', status: 'Tobias bindet sich im Stehen den Schuh. Georgia schaut auf die Uhr und wippt auf den Zehenspitzen.' },
-  { pair: '12-anreise', status: 'Tobias ist mit seinem Rollkoffer unterwegs. Georgia hält lächelnd nach ihm Ausschau.' },
+  { pair: '12-anreise', status: 'Tobias zieht seinen geschlossenen beigen Rollkoffer hinter sich her. Georgia hält lächelnd nach ihm Ausschau.' },
   { couple: '06-wiedersehen', status: 'Wiedersehen. Georgia und Tobias umarmen sich.' },
 ];
 

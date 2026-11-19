@@ -12,8 +12,8 @@ Jede Stufe beginnt beim Erreichen ihrer Schwelle und läuft bis zum Beginn der n
 | 4 | 14 Tage | Erstes Lächeln | `03` |
 | 5 | 10 Tage | Ein Kuss durchs Handy | `05-handykuss` |
 | 6 | 7 Tage | Vorfreude | `04` |
-| 7 | 4 Tage | Die Zeit gemeinsam vertreiben | `07-controller` |
-| 8 | 2 Tage | Platz für zwei | `08-platz-fuer-zwei` |
+| 7 | 4 Tage | Vorfreude genießen | `07-controller` |
+| 8 | 2 Tage | Es kribbelt schon | `08-platz-fuer-zwei` |
 | 9 | 24 Stunden | Kaum noch auszuhalten | `05` |
 | 10 | 16 Stunden | Koffer packen | `10-kofferpacken` |
 | 11 | 8 Stunden | Gleich geht’s los | `11-aufbruch` |
@@ -30,10 +30,10 @@ Die Paarpose wird mit `(216, 602)` am Treffpunkt ausgerichtet. Dort liegen die F
 
 [Georgia G3-A](references/georgia.png) und [Tobias T1-A](references/tobias.png) dienten dem integrierten ImageGen in jeder neuen Anfrage als direkte visuelle Referenzen. Eine vorhandene Einzelpose gab jeweils Zeichenstil, Proportionen und Blickrichtung vor. Die Prompts verlangten fein konturierte Ganzkörperzeichnungen mit derselben Kleidung und denselben Accessoires, Lichteinfall von links oben, echte Transparenz, vollständig sichtbare Requisiten und schriftfreie Oberflächen. Die Zeichnungen wurden anschließend im PNG-Rahmen am Fußpunkt ausgerichtet.
 
-- **Stufe 3** · Georgia drückt ein Foto von Tobias ans Herz. Tobias betrachtet Georgias Foto und streicht mit dem Daumen über den Rand. Beide Fotos zeigen die gezeichneten Figuren.
-- **Stufe 5** · Georgia schickt einen Handkuss in die Handykamera. Tobias schaut errötend aufs Display.
-- **Stufe 7** · Beide halten einen Controller. Georgia grinst siegessicher, Tobias beugt sich vor Konzentration nach vorn.
-- **Stufe 8** · Georgia stellt eine grüne neben eine cremefarbene Tasse. Tobias vergleicht zwei Filmhüllen mit einer Rakete und einer Berglandschaft als Bildmotive.
-- **Stufe 10** · Georgia schüttelt ein zweites Kopfkissen links vor ihrem Körper auf. Tobias drückt den letzten gefalteten Pulli in den offenen Rollkoffer zwischen seinen Schuhen.
+- **Stufe 3** · Georgia drückt ein Foto von Tobias ans Herz. Sie trägt die Smartwatch, das andere Handgelenk ist frei. Tobias betrachtet Georgias Foto und streicht mit dem Daumen über den Rand. Beide Fotos zeigen die gezeichneten Figuren.
+- **Stufe 5** · Georgia schickt einen Handkuss in die Handykamera. Tobias schaut errötend aufs Display. Seine blauen Augen bleiben beim gesenkten Blick rund und gut sichtbar wie in der Figurenreferenz.
+- **Stufe 7** · Georgia neigt den Kopf, hält die Hände locker hinter dem Rücken und lächelt versonnen. Tobias steht mit einer Hand in der Hosentasche da und grinst zufrieden. Beide sind ohne Requisiten dargestellt.
+- **Stufe 8** · Georgia legt mit leuchtenden Augen die Hände unter dem Kinn zusammen. Tobias verlagert sein Gewicht leicht nach vorn, hebt die Brauen und strahlt. Körperhaltung und Mimik zeigen etwas mehr Spannung als in Stufe 7. Beide sind ohne Requisiten dargestellt.
+- **Stufe 10** · Georgia schüttelt ein zweites Kopfkissen links vor ihrem Körper auf. Tobias drückt einen weißen gefalteten Pulli in den offenen beigen Rollkoffer zwischen seinen Schuhen.
 - **Stufe 11** · Georgia schaut auf ihre Armbanduhr und hebt die Fersen. Tobias bindet im Stehen einen Schuh und trägt die Jacke über dem Arm.
-- **Stufe 12** · Georgia hält lächelnd Ausschau und beschattet mit der Hand ihre Augen. Tobias zieht den geschlossenen ockerfarbenen Rollkoffer im Schritt hinter sich her, die offene Jacke weht nach hinten.
+- **Stufe 12** · Georgia hält lächelnd Ausschau und beschattet mit der Hand ihre Augen. Tobias zieht denselben beigen Rollkoffer aus Stufe 10 geschlossen hinter sich her. Die offene Jacke weht im Schritt nach hinten.
