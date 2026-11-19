@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Countdown bis zum Wiedersehen</title>
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <main>
+      <h1>Countdown bis zum Wiedersehen</h1>
+      <p id="status" role="status">Termin wird geladen …</p>
+      <a id="default-link" hidden>Seite ohne Terminparameter öffnen</a>
+      <section id="countdown" hidden aria-label="Verbleibende Zeit">
+        <p>
+          <span data-unit="days"></span> Tage,
+          <span data-unit="hours"></span> Stunden,
+          <span data-unit="minutes"></span> Minuten,
+          <span data-unit="seconds"></span> Sekunden
+        </p>
+        <details>
+          <summary>Restzeit im Detail</summary>
+          <dl>
+            <dt>Gesamttage</dt>
+            <dd data-total="days"></dd>
+            <dt>Gesamtstunden</dt>
+            <dd data-total="hours"></dd>
+            <dt>Gesamtminuten</dt>
+            <dd data-total="minutes"></dd>
+            <dt>Gesamtsekunden</dt>
+            <dd data-total="seconds"></dd>
+          </dl>
+        </details>
+      </section>
+    </main>
+  </body>
+</html>
